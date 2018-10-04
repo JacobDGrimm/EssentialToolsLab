@@ -10,7 +10,11 @@ namespace EssentialTools.Models
         decimal ApplyDiscount(decimal totalParam);
     }
 
-    public class Discount
+    public class DefaultDiscountHelper : IDiscountHelper
     {
+        public decimal ApplyDiscount(decimal totalParam)
+        {
+            return (totalParam - (10m / 100m * totalParam));
+        }
     }
 }
