@@ -36,5 +36,15 @@ namespace EssentialTools.Tests
             Assert.AreEqual(95, HundredDollarDiscount, "$100 discount is wrong");
             Assert.AreEqual(45, FiftyDollarDiscount, "$50 discount is wrong");
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Discount_Negative_Total()
+        {
+            // arrange
+            IDiscountHelper target = getTestObject();
+            //act 
+            target.ApplyDiscount(-1);
+        }
     }
 }
