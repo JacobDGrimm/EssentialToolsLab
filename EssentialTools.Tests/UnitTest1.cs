@@ -38,6 +38,19 @@ namespace EssentialTools.Tests
         }
 
         [TestMethod]
+        public void Discount_Less_Than_10()
+        {
+            // arrange
+            IDiscountHelper target = getTestObject();
+            // act
+            decimal discount5 = target.ApplyDiscount(5);
+            decimal discount0 = target.ApplyDiscount(0);
+            // assert
+            Assert.AreEqual(5, discount5);
+            Assert.AreEqual(0, discount0);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Discount_Negative_Total()
         {
